@@ -60,3 +60,43 @@ window-rule {
     match app-id="swaync"
     open-floating true
 }
+
+// Frosted glass for terminals
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    opacity 0.90
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}
+
+window-rule {
+    match app-id="Alacritty"
+    opacity 0.90
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}
+
+window-rule {
+    match app-id="kitty"
+    opacity 0.90
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}
+
+// Subtle dim for inactive windows
+window-rule {
+    match is-active=false
+    opacity 0.95
+    background-effect {
+        blur true
+    }
+}

@@ -1,0 +1,31 @@
+// Niri layer rules for frosted glass - arch-config managed by chezmoi
+
+layer-rule {
+    match namespace="^waybar$"
+    opacity 0.85
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}
+
+layer-rule {
+    match namespace="^swaync-.*$"
+    opacity 0.85
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}
+
+layer-rule {
+    match namespace="^rofi-.*$"
+    opacity 0.85
+    background-effect {
+        blur true
+        noise 0.02
+        saturation 1.2
+    }
+}

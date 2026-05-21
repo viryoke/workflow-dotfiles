@@ -27,6 +27,9 @@
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
+@define-color base-alpha rgba(30, 30, 46, 0.85);
+@define-color surface0-alpha rgba(49, 50, 68, 0.85);
+@define-color mantle-alpha rgba(24, 24, 37, 0.85);
 {{- else }}
 @define-color rosewater #dc8a78;
 @define-color flamingo #dd7878;
@@ -54,6 +57,9 @@
 @define-color base #eff1f5;
 @define-color mantle #e6e9ef;
 @define-color crust #dce0e8;
+@define-color base-alpha rgba(239, 241, 245, 0.85);
+@define-color surface0-alpha rgba(204, 208, 218, 0.85);
+@define-color mantle-alpha rgba(230, 233, 239, 0.85);
 {{- end }}
 
 * {
@@ -63,7 +69,7 @@
 }
 
 window#waybar {
-    background: @base;
+    background: @base-alpha;
     color: @text;
 }
 
@@ -101,28 +107,28 @@ window#waybar {
 #keyboard-state {
     padding: 0 8px;
     color: @text;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #cpu {
     padding: 0 8px;
     color: @mauve;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #memory {
     padding: 0 8px;
     color: @peach;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #temperature {
     padding: 0 8px;
     color: @sapphire;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -133,14 +139,14 @@ window#waybar {
 #disk {
     padding: 0 8px;
     color: @teal;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #network {
     padding: 0 8px;
     color: @teal;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -151,7 +157,7 @@ window#waybar {
 #bluetooth {
     padding: 0 8px;
     color: @blue;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -162,7 +168,7 @@ window#waybar {
 #pulseaudio {
     padding: 0 8px;
     color: @rosewater;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -173,7 +179,7 @@ window#waybar {
 #battery {
     padding: 0 8px;
     color: @green;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -188,14 +194,14 @@ window#waybar {
 #backlight {
     padding: 0 8px;
     color: @yellow;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #idle_inhibitor {
     padding: 0 8px;
     color: @text;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -206,7 +212,7 @@ window#waybar {
 #custom-swaync {
     padding: 0 8px;
     color: @text;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -217,14 +223,14 @@ window#waybar {
 #custom-cliphist {
     padding: 0 8px;
     color: @text;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
 #custom-wlsunset {
     padding: 0 8px;
     color: @text;
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
 }
 
@@ -241,7 +247,7 @@ window#waybar {
 }
 
 tooltip {
-    background: @mantle;
+    background: @mantle-alpha;
     color: @text;
     border: 1px solid @surface2;
     border-radius: 8px;

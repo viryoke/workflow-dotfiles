@@ -22,6 +22,7 @@ environment {
 include "./keybindings.kdl"
 include "./windowrules.kdl"
 include "./spawn-at-startup.kdl"
+include "./layerrules.kdl"
 
 input {
     keyboard {
@@ -124,6 +125,13 @@ hotkey-overlay {
 
 animations {
     slowdown 1.0
+}
+
+blur {
+    passes 2
+    offset 1.0
+    noise 0.02
+    saturation 1.2
 }
 
 output "eDP-1" {

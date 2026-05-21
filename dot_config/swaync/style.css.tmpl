@@ -27,6 +27,10 @@
 @define-color base #1e1e2e;
 @define-color mantle #181825;
 @define-color crust #11111b;
+@define-color base-alpha rgba(30, 30, 46, 0.85);
+@define-color surface0-alpha rgba(49, 50, 68, 0.85);
+@define-color surface1-alpha rgba(69, 71, 90, 0.85);
+@define-color surface2-alpha rgba(88, 91, 112, 0.85);
 {{- else }}
 @define-color rosewater #dc8a78;
 @define-color flamingo #dd7878;
@@ -54,10 +58,14 @@
 @define-color base #eff1f5;
 @define-color mantle #e6e9ef;
 @define-color crust #dce0e8;
+@define-color base-alpha rgba(239, 241, 245, 0.85);
+@define-color surface0-alpha rgba(204, 208, 218, 0.85);
+@define-color surface1-alpha rgba(188, 192, 204, 0.85);
+@define-color surface2-alpha rgba(172, 176, 190, 0.85);
 {{- end }}
 
 .control-center {
-    background: @base;
+    background: @base-alpha;
     color: @text;
     border-radius: 12px;
     border: 2px solid @surface2;
@@ -68,7 +76,7 @@
     color: @text;
     border-radius: 12px;
     border: 2px solid @surface2;
-    background: @surface0;
+    background: @surface0-alpha;
     padding: 8px;
 }
 
@@ -89,7 +97,7 @@
 
 .dnd-button {
     border-radius: 8px;
-    background: @surface0;
+    background: @surface0-alpha;
     color: @text;
     border: 1px solid @surface2;
     padding: 4px 12px;
@@ -102,7 +110,7 @@
 
 .clear-notifications-button {
     border-radius: 8px;
-    background: @surface0;
+    background: @surface0-alpha;
     color: @text;
     border: 1px solid @surface2;
     padding: 4px 12px;
@@ -115,7 +123,7 @@
 
 .notification-action {
     border-radius: 8px;
-    background: @surface0;
+    background: @surface0-alpha;
     color: @text;
     border: 1px solid @surface2;
 }
@@ -126,7 +134,7 @@
 }
 
 .notification-close-button {
-    background: @surface0;
+    background: @surface0-alpha;
     color: @text;
     border-radius: 8px;
 }
@@ -149,7 +157,7 @@
 }
 
 .widget-mpris {
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
     color: @text;
     padding: 8px;
@@ -170,14 +178,14 @@
 }
 
 .widget-volume {
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
     padding: 8px;
     color: @text;
 }
 
 .widget-backlight {
-    background: @surface0;
+    background: @surface0-alpha;
     border-radius: 8px;
     padding: 8px;
     color: @text;
@@ -187,7 +195,7 @@
     padding: 4px;
     flowboxchild {
         border-radius: 8px;
-        background: @surface0;
+        background: @surface0-alpha;
         color: @text;
         padding: 8px;
         border: 1px solid @surface2;
