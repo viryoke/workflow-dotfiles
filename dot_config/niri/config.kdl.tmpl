@@ -1,0 +1,135 @@
+// Niri config - arch-config managed by chezmoi
+// Cross-platform but Linux-only (ignored on Mac)
+
+{{- if eq .theme "mocha" }}
+environment {
+    NIRI_CONFIG_THEME "mocha"
+    QT_QPA_PLATFORM "wayland;xcb"
+    XDG_CURRENT_DESKTOP "niri"
+    GDK_BACKEND "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+}
+{{- else }}
+environment {
+    NIRI_CONFIG_THEME "latte"
+    QT_QPA_PLATFORM "wayland;xcb"
+    XDG_CURRENT_DESKTOP "niri"
+    GDK_BACKEND "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+}
+{{- end }}
+
+include "./keybindings.kdl"
+include "./windowrules.kdl"
+include "./spawn-at-startup.kdl"
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            options "ctrl:nocaps,compose:ralt"
+        }
+        repeat-delay 600
+        repeat-rate 25
+    }
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 0.2
+    }
+    mouse {
+        natural-scroll
+        accel-speed 0.2
+    }
+    warp-mouse-to-focus
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Cursor"
+    xcursor-size 24
+    hide-after-inactive-ms 3000
+}
+
+layout {
+    gaps 8
+    center-focused-column "on-overflow"
+    always-center-single-column
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        fixed 1280
+    }
+    default-column-width { proportion 0.5; }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        fixed 720
+    }
+
+    focus-ring {
+        width 4
+        {{- if eq .theme "mocha" }}
+        active-color "#cba6f7"
+        inactive-color "#45475a"
+        urgent-color "#f38ba8"
+        {{- else }}
+        active-color "#8839ef"
+        inactive-color "#9ca0b0"
+        urgent-color "#d20f39"
+        {{- end }}
+    }
+
+    border {
+        off
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        draw-behind-window true
+        color "#00000070"
+    }
+
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+
+    tab-indicator {
+        hide-when-single-tab
+        place-within-column
+        gap 5
+        width 4
+        active-color "#cba6f7"
+        inactive-color "#585b70"
+    }
+}
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S.png"
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+animations {
+    slowdown 1.0
+}
+
+output "eDP-1" {
+    // Laptop screen placeholder - configure per machine
+}
+
+output "HDMI-A-1" {
+    // External monitor placeholder - configure per machine
+}
