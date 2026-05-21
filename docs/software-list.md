@@ -85,8 +85,8 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | Proxy | clash-verge-rev-bin | AUR |
 | Messaging | Telegram Desktop | pacman |
 | Messaging | WeChat | AUR (wechat-universal-bwrap) |
-| AI agent (Google) | Antigravity 2.0 (desktop) + Antigravity CLI | curl install script / .tar.gz download |
-| AI CLI | Claude Code + Antigravity CLI | nix develop `.#ai` + curl install |
+| AI agent (Google) | Antigravity 2.0 (desktop) + Antigravity CLI (agy) | curl install script / .tar.gz download |
+| AI CLI | Claude Code | nix develop `.#ai` |
 | Browser | Firefox | pacman |
 | Browser | Chrome | pacman |
 | Media player | MPV | pacman |
