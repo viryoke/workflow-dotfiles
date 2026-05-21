@@ -13,7 +13,7 @@ Powered by [chezmoi](https://chezmoi.io) for template-based dotfile sync, [age](
 - **Wallbash auto-theming** — wallpaper changes auto-recolor the entire desktop based on luminance detection
 - **7 Rofi menu suite** — app launcher, power menu, clipboard, screenshot, emoji, wallpaper, theme switch
 - **17 Waybar modules** — workspaces, window title, keyboard, CPU, memory, temp, disk, network, bluetooth, audio, battery, backlight, idle inhibitor, swaync, cliphist, wlsunset, tray
-- **8 nix devShells** — Python, Node.js, Rust, Go, C++, Java, CUDA, AI — isolated, reproducible, zero system pollution
+- **8 nix devShells** — Python, Node.js, Rust, Go, C++, Java, CUDA, AI (Claude Code + Antigravity CLI) — isolated, reproducible, zero system pollution
 - **Full post-install automation** — 10 scripts that turn a fresh CachyOS install into a configured desktop in one command
 - **Age encryption** — proxy configs, SSH keys encrypted via chezmoi's built-in age integration
 
@@ -129,7 +129,7 @@ nix develop .#go        # Go + gopls
 nix develop .#cpp       # gcc + cmake + clang + gdb
 nix develop .#java      # JDK 21 + gradle
 nix develop .#cuda      # CUDA 12 + cuDNN + numpy (Linux only)
-nix develop .#ai        # Claude Code
+nix develop .#ai        # Claude Code + Antigravity CLI (Gemini CLI)
 ```
 
 Works on both **aarch64-darwin** (Mac) and **x86_64-linux** (CachyOS), except CUDA which is Linux-only.

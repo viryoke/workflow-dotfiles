@@ -85,6 +85,7 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | Proxy | clash-verge-rev-bin | AUR |
 | Messaging | Telegram Desktop | pacman |
 | Messaging | WeChat | AUR (wechat-universal-bwrap) |
+| AI agent (Google) | Antigravity 2.0 (Gemini CLI) | nix develop `.#ai` |
 | Browser | Firefox | pacman |
 | Browser | Chrome | pacman |
 | Media player | MPV | pacman |
@@ -128,7 +129,7 @@ All dev environments are isolated via nix. Activated with `nix develop .#<name>`
 | C++ | gcc + cmake + clang | nix develop `.#cpp` |
 | Java | jdk (latest LTS) + gradle | nix develop `.#java` |
 | CUDA toolkit | cudaPackages (latest) | nix develop `.#cuda` |
-| AI CLI | Claude Code | nix develop `.#ai` |
+| AI CLI | Claude Code + Antigravity CLI (Gemini CLI) | nix develop `.#ai` |
 
 ---
 
