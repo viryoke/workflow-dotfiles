@@ -1,0 +1,121 @@
+// Niri keybindings - arch-config managed by chezmoi
+// Mod = Super key
+
+binds {
+    // Terminal
+    Mod+Return { spawn "ghostty"; }
+
+    // App launcher
+    Mod+D { spawn "rofi" "-show" "drun"; }
+
+    // Clipboard
+    Mod+V { spawn "rofi" "-show" "clipboard" "-modi" "clipboard:~/.config/rofi-wayland/scripts/clipboard.sh"; }
+
+    // Close window
+    Mod+Q { close-window; }
+
+    // Window focus (vim-style)
+    Mod+Left { focus-column-left; }
+    Mod+Down { focus-window-down; }
+    Mod+Up { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    // Move window
+    Mod+Ctrl+Left { move-column-left; }
+    Mod+Ctrl+Down { move-window-down; }
+    Mod+Ctrl+Up { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+J { move-window-down; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+L { move-column-right; }
+
+    // Workspace switching (1-9)
+    Mod+1 { focus-workspace "1"; }
+    Mod+2 { focus-workspace "2"; }
+    Mod+3 { focus-workspace "3"; }
+    Mod+4 { focus-workspace "4"; }
+    Mod+5 { focus-workspace "5"; }
+    Mod+6 { focus-workspace "6"; }
+    Mod+7 { focus-workspace "7"; }
+    Mod+8 { focus-workspace "8"; }
+    Mod+9 { focus-workspace "9"; }
+    Mod+0 { focus-workspace "10"; }
+
+    // Move window to workspace
+    Mod+Ctrl+1 { move-column-to-workspace "1"; }
+    Mod+Ctrl+2 { move-column-to-workspace "2"; }
+    Mod+Ctrl+3 { move-column-to-workspace "3"; }
+    Mod+Ctrl+4 { move-column-to-workspace "4"; }
+    Mod+Ctrl+5 { move-column-to-workspace "5"; }
+    Mod+Ctrl+6 { move-column-to-workspace "6"; }
+    Mod+Ctrl+7 { move-column-to-workspace "7"; }
+    Mod+Ctrl+8 { move-column-to-workspace "8"; }
+    Mod+Ctrl+9 { move-column-to-workspace "9"; }
+    Mod+Ctrl+0 { move-column-to-workspace "10"; }
+
+    // Adjacent workspace nav
+    Mod+U { focus-workspace-down; }
+    Mod+I { focus-workspace-up; }
+    Mod+Ctrl+U { move-column-to-workspace-down; }
+    Mod+Ctrl+I { move-column-to-workspace-up; }
+
+    // Column width presets
+    Mod+R { switch-preset-column-width; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
+
+    // Column resize
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Window merging/splitting
+    Mod+Comma { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    // Floating/tiling toggle
+    Mod+Shift+V { toggle-window-floating; }
+
+    // Tabbed display
+    Mod+W { toggle-column-tabbed-display; }
+
+    // Overview
+    Mod+O { toggle-overview; }
+
+    // Screenshots
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    // Power/lock
+    Mod+Shift+E { quit; }
+    Mod+Shift+P { power-off-monitors; }
+    Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
+    Ctrl+Alt+Delete { quit; skip-confirmation; }
+
+    // Audio/media keys
+    XF86AudioRaiseVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "+5%"; }
+    XF86AudioLowerVolume { spawn "pactl" "set-sink-volume" "@DEFAULT_SINK@" "-5%"; }
+    XF86AudioMute { spawn "pactl" "set-sink-mute" "@DEFAULT_SINK@" "toggle"; }
+    XF86AudioMicMute { spawn "pactl" "set-source-mute" "@DEFAULT_SOURCE@" "toggle"; }
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+
+    // Rofi menus
+    Mod+Shift+D { spawn "~/.config/rofi-wayland/scripts/powermenu.sh"; }
+    Mod+Shift+S { spawn "~/.config/rofi-wayland/scripts/screenshot.sh"; }
+    Mod+Shift+E { spawn "~/.config/rofi-wayland/scripts/emoji.sh"; }
+    Mod+Shift+W { spawn "~/.config/rofi-wayland/scripts/wallpaper.sh"; }
+    Mod+Shift+T { spawn "~/.config/rofi-wayland/scripts/themeswitch.sh"; }
+
+    // Monitor brightness
+    XF86MonBrightnessUp { spawn "light" "-A" "5"; }
+    XF86MonBrightnessDown { spawn "light" "-U" "5"; }
+}
