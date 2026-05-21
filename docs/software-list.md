@@ -128,7 +128,7 @@ All dev environments are isolated via nix. Activated with `nix develop .#<name>`
 | C++ | gcc + cmake + clang | nix develop `.#cpp` |
 | Java | jdk (latest LTS) + gradle | nix develop `.#java` |
 | CUDA toolkit | cudaPackages (latest) | nix develop `.#cuda` |
-| AI CLI | Claude Code + OpenCode + Hermes | nix develop `.#ai` |
+| AI CLI | Claude Code | nix develop `.#ai` |
 
 ---
 
