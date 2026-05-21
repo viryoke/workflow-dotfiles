@@ -11,7 +11,12 @@
         "x86_64-linux"
         "aarch64-darwin"
       ];
-      pkgsFor = forAllSystems (system: nixpkgs.legacyPackages.${system});
+      pkgsFor = forAllSystems (system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+      );
     in
     {
       devShells = forAllSystems (system:
