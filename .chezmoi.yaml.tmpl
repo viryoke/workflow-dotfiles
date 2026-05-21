@@ -1,0 +1,13 @@
+data:
+  machineType:
+    {{- if eq .chezmoi.os "darwin" }}
+    "mac"
+    {{- else }}
+    "linux"
+    {{- end }}
+  theme:
+    {{- if eq .chezmoi.os "darwin" }}
+    "mocha"
+    {{- else }}
+    "mocha"
+    {{- end }}

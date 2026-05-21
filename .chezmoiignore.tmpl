@@ -1,0 +1,16 @@
+{{- if eq .chezmoi.os "darwin" }}
+dot_config/niri/
+dot_config/fcitx5/
+dot_config/waybar/
+dot_config/rofi-wayland/
+dot_config/swaync/
+dot_config/yazi/
+dot_config/zellij/
+dot_config/lazyvim/
+dot_config/clash-verge-rev/
+encrypted/clash-verge-rev-profiles.yaml.age
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+# Mac-specific files (none yet, but placeholder for future)
+{{- end }}
