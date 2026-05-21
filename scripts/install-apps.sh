@@ -73,3 +73,25 @@ usermod -aG docker "$(whoami)"
 log "User added to docker group (logout required for group to take effect)"
 
 log "Applications done"
+
+# Install Antigravity CLI
+log "Installing Antigravity CLI..."
+if ! command -v agy &>/dev/null; then
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+    log "Antigravity CLI (agy) installed"
+else
+    log "Antigravity CLI already installed: $(agy --version 2>/dev/null | head -1)"
+fi
+
+# Install Antigravity 2.0 (desktop app)
+log "Installing Antigravity 2.0..."
+ANTIGRAVITY_TMP="$(mktemp -d)"
+curl -fsSL "https://storage.googleapis.com/antigravity-public/antigravity-hub/2.0.1-6566078776737792/linux-x64/Antigravity.tar.gz" -o "$ANTIGRAVITY_TMP/Antigravity.tar.gz"
+tar -xzf "$ANTIGRAVITY_TMP/Antigravity.tar.gz" -C "$ANTIGRAVITY_TMP"
+mkdir -p /opt/antigravity
+cp -r "$ANTIGRAVITY_TMP/Antigravity" /opt/antigravity/
+ln -sf /opt/antigravity/Antigravity /usr/local/bin/antigravity-hub 2>/dev/null || true
+rm -rf "$ANTIGRAVITY_TMP"
+log "Antigravity 2.0 installed to /opt/antigravity/"
+
+log "Apps + Antigravity done"

@@ -111,7 +111,7 @@ If nix breaks, only dev shells stop working; the system remains operational. pac
 | NVIDIA driver, desktop, apps | Python 3.13 + uv |
 | Fonts, themes, cursor | Bun + Node.js 22 |
 | Steam, Telegram, WeChat | Rust + cargo + rust-analyzer |
-| Docker, Podman, Tailscale | Go, C++/gcc/cmake, Java/JDK |
+| Docker, Podman, Tailscale | Go, C++/gcc/cmake, Java/JDK, Antigravity CLI (agy) |
 
 ---
 
@@ -129,7 +129,7 @@ nix develop .#go        # Go + gopls
 nix develop .#cpp       # gcc + cmake + clang + gdb
 nix develop .#java      # JDK 21 + gradle
 nix develop .#cuda      # CUDA 12 + cuDNN + numpy (Linux only)
-nix develop .#ai        # Claude Code + Antigravity CLI (Gemini CLI)
+nix develop .#ai        # Claude Code + Antigravity CLI (auto-installs on first enter)
 ```
 
 Works on both **aarch64-darwin** (Mac) and **x86_64-linux** (CachyOS), except CUDA which is Linux-only.
