@@ -1,0 +1,23 @@
+# chezmoi state
+.chezmoi.state
+
+# age encryption keys (never commit private keys)
+*.age.key
+
+# nix build results
+nix/result
+nix/result-*
+
+# OS-specific junk
+.DS_Store
+Thumbs.db
+
+# editor artifacts
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# claude code local config
+.claude/
