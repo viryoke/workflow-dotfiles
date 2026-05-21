@@ -1,0 +1,9 @@
+[Hotkey]
+TriggerKey=CTRL_SPACE
+EnumerateForwardKey=CTRL_SHIFT_SPACE
+EnumerateBackwardKey=
+
+[Behavior]
+ActiveByDefault=False
+ShareInputState=Program
+DefaultIM=pinyin
