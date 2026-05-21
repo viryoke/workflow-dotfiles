@@ -1,0 +1,52 @@
+# git config - arch-config managed by chezmoi
+# Cross-platform configuration
+
+[user]
+	name = {{ .chezmoi.hostname | default "viryoke" }}
+	email = viryoke@users.noreply.github.com
+
+[core]
+	editor = nvim
+	autocrlf = input
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
+
+[diff]
+	tool = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	line-numbers = true
+{{- if eq .theme "mocha" }}
+	side-by-side = true
+	dark = true
+	syntax-theme = Catppuccin Mocha
+{{- else }}
+	side-by-side = true
+	light = true
+	syntax-theme = Catppuccin Latte
+{{- end }}
+
+[merge]
+	conflictstyle = diff3
+
+[credential]
+{{- if eq .chezmoi.os "darwin" }}
+	helper = osxkeychain
+{{- else }}
+	helper = cache --timeout=3600
+{{- end }}
+
+[alias]
+	s = status -sb
+	l = log --oneline -20
+	ll = log --oneline --graph --all --decorate
+	d = diff
+	ds = diff --staged

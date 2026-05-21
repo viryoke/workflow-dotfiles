@@ -1,0 +1,49 @@
+# Starship prompt config - arch-config managed by chezmoi
+# Cross-platform configuration
+
+format = """
+$directory\
+$git_branch\
+$git_status\
+$git_state\
+${custom.niri}\
+$python\
+$rust\
+$golang\
+$nodejs\
+$cmd_duration\
+$line_break\
+$jobs\
+$character"""
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
+[character]
+{{- if eq .theme "mocha" }}
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+{{- else }}
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+{{- end }}
+
+[cmd_duration]
+min_time = 2_000
+format = " [$duration]($style) "
+
+{{- if eq .chezmoi.os "linux" }}
+[custom.niri]
+command = "echo 'niri'"
+when = "test -n \"$NIRI_SOCKET\""
+format = "[$output]($style) "
+style = "bold purple"
+{{- end }}

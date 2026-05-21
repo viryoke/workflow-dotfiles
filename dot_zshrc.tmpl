@@ -1,0 +1,68 @@
+# zshrc - arch-config managed by chezmoi
+# Cross-platform shell configuration
+
+# ---- History ----
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+
+# ---- Aliases ----
+alias ll='ls -lh'
+alias la='ls -la'
+alias gs='git status'
+alias gd='git diff'
+alias gc='git commit'
+alias gco='git checkout'
+alias gb='git branch'
+
+{{- if eq .chezmoi.os "linux" }}
+alias pac='paru'
+alias pacs='paru -Ss'
+alias pacu='paru -Syu'
+alias niri-restart='niri msg action quit; niri'
+alias screenshot='hyprshot -m region'
+{{- else }}
+alias brewu='brew update && brew upgrade'
+alias brewc='brew cleanup'
+{{- end }}
+
+# ---- Key bindings ----
+bindkey -e
+bindkey '^R' history-incremental-search-backward
+
+# ---- Completion ----
+autoload -Uz compinit
+compinit
+
+# ---- Plugins (manual, not oh-my-zsh) ----
+# zsh-autosuggestions - installed by pacman on Linux, brew on Mac
+{{- if eq .chezmoi.os "linux" }}
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+{{- else }}
+# Mac: these are installed via Homebrew or nix
+if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+{{- end }}
+
+# ---- Starship prompt ----
+eval "$(starship init zsh)"
+
+# ---- Direnv (nix) ----
+if command -v direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# ---- fcitx5 (Linux only) ----
+{{- if eq .chezmoi.os "linux" }}
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+{{- end }}

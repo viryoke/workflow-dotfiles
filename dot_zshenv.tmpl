@@ -1,0 +1,16 @@
+# zshenv - environment variables (loaded for all zsh instances)
+# arch-config managed by chezmoi
+
+export EDITOR=nvim
+export VISUAL=nvim
+
+{{- if eq .chezmoi.os "linux" }}
+export BROWSER=firefox
+{{- else }}
+export BROWSER=open
+{{- end }}
+
+# XDG directories
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
