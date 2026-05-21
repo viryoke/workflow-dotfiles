@@ -1,0 +1,38 @@
+# Ghostty config - arch-config managed by chezmoi
+# Cross-platform with Mac/Linux differences
+
+scrollback-limit = 10000000
+
+{{- if eq .theme "mocha" }}
+theme = Catppuccin Mocha
+window-theme = dark
+{{- else }}
+theme = Catppuccin Latte
+window-theme = light
+{{- end }}
+
+{{- if eq .chezmoi.os "darwin" }}
+macos-option-as-alt = true
+{{- else }}
+shell-integration = none
+wait-after-command = true
+abnormal-command-exit-runtime = 500
+confirm-close-surface = always
+{{- end }}
+
+# Fonts
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 14
+
+# Window appearance
+unfocused-split-opacity = 0.50
+{{- if eq .theme "mocha" }}
+unfocused-split-fill = #181825
+split-divider-color = #cba6f7
+{{- else }}
+unfocused-split-fill = #e6e9ef
+split-divider-color = #8839ef
+{{- end }}
+
+# Clipboard
+copy-on-select = clipboard
