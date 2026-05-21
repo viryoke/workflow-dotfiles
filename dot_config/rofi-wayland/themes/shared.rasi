@@ -1,0 +1,22 @@
+// Shared rofi layout dimensions - arch-config managed by chezmoi
+// Imported by all rofi configs for consistent sizing
+
+* {
+    main-bg:                     #11111be6;
+    main-fg:                     #cdd6f4ff;
+    main-br:                     #cba6f7ff;
+    main-ex:                     #f5e0dcff;
+    select-bg:                   #b4befeff;
+    select-fg:                   #11111bff;
+    separatorcolor:              transparent;
+    border-color:                transparent;
+
+    font:                        "JetBrainsMono Nerd Font 10";
+
+    border-radius:               12;
+    spacing:                     5;
+    padding:                     8;
+
+    background-color:            transparent;
+    text-color:                  @main-fg;
+}
