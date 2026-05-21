@@ -1,0 +1,62 @@
+// Niri window rules - arch-config managed by chezmoi
+
+window-rule {
+    match app-id="firefox"
+    open-on-workspace "2"
+}
+
+window-rule {
+    match app-id="telegramdesktop"
+    open-on-workspace "3"
+}
+
+window-rule {
+    match title=r#"WeChat"#
+    open-on-workspace "3"
+}
+
+window-rule {
+    match app-id="steam"
+    open-on-workspace "4"
+    open-maximized true
+}
+
+window-rule {
+    match app-id="org.kde.dolphin"
+    open-on-workspace "5"
+}
+
+window-rule {
+    match app-id="thunar"
+    open-on-workspace "5"
+}
+
+window-rule {
+    match app-id="libreoffice"
+    open-on-workspace "6"
+}
+
+window-rule {
+    match app-id="mpv"
+    open-maximized true
+    open-floating true
+}
+
+window-rule {
+    match app-id="pavucontrol"
+    open-floating true
+    default-column-width { fixed 600; }
+    default-window-height { fixed 400; }
+}
+
+window-rule {
+    match app-id="blueman-manager"
+    open-floating true
+    default-column-width { fixed 500; }
+    default-window-height { fixed 400; }
+}
+
+window-rule {
+    match app-id="swaync"
+    open-floating true
+}

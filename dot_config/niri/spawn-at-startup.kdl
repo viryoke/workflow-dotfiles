@@ -1,0 +1,8 @@
+// Niri startup commands - arch-config managed by chezmoi
+
+spawn-at-startup "waybar"
+spawn-at-startup "swaync-client" "-sw"
+spawn-at-startup "swww" "restore"
+spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
+spawn-at-startup "swayidle" "-w" "timeout" "300" "swaylock" "timeout" "600" "loginctl" "suspend" "before-sleep" "swaylock"
+spawn-at-startup "fcitx5" "-d" "--replace"
