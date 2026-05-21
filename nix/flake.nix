@@ -28,7 +28,6 @@
           go = import ./devShells/go.nix { inherit pkgs; };
           cpp = import ./devShells/cpp.nix { inherit pkgs; };
           java = import ./devShells/java.nix { inherit pkgs; };
-          ai = import ./devShells/ai.nix { inherit pkgs; };
           cuda = import ./devShells/cuda.nix { pkgs = pkgsFor.x86_64-linux; };
         }
       );

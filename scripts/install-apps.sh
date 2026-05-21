@@ -74,6 +74,15 @@ log "User added to docker group (logout required for group to take effect)"
 
 log "Applications done"
 
+# Install Claude Code
+log "Installing Claude Code..."
+if ! command -v claude &>/dev/null; then
+    curl -fsSL https://claude.ai/install.sh | bash
+    log "Claude Code installed"
+else
+    log "Claude Code already installed: $(claude --version 2>/dev/null | head -1)"
+fi
+
 # Install Antigravity CLI
 log "Installing Antigravity CLI..."
 if ! command -v agy &>/dev/null; then
