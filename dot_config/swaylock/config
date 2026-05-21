@@ -1,0 +1,17 @@
+# swaylock config - arch-config managed by chezmoi
+ignore-empty-password
+show-failed-attempts
+daemonize
+color=#1e1e2e
+inside-color=#313244
+ring-color=#585b70
+key-hl-color=#cba6f7
+bs-hl-color=#f38ba8
+text-color=#cdd6f4
+inside-ver-color=#cba6f7
+ring-ver-color=#cba6f7
+text-ver-color=#1e1e2e
+inside-wrong-color=#f38ba8
+ring-wrong-color=#f38ba8
+text-wrong-color=#1e1e2e
+line-uses-inside
