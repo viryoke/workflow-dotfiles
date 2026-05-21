@@ -1,0 +1,152 @@
+// Waybar config - arch-config managed by chezmoi
+// 17 modules + tray for Niri desktop
+
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 4,
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "keyboard-state",
+        "cpu",
+        "memory",
+        "temperature",
+        "disk",
+        "network",
+        "bluetooth",
+        "pulseaudio",
+        "battery",
+        "backlight",
+        "idle_inhibitor",
+        "custom/swaync",
+        "custom/cliphist",
+        "custom/wlsunset",
+        "tray"
+    ],
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十",
+            "focused": "",
+            "active": "",
+            "urgent": "",
+            "empty": "",
+            "default": ""
+        },
+        "current-only": false,
+        "hide-empty": false
+    },
+    "niri/window": {
+        "format": "{title}",
+        "icon": true,
+        "icon-size": 24,
+        "max-length": 50,
+        "separate-outputs": false
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+    "disk": {
+        "format": "{percentage_used}% ",
+        "path": "/"
+    },
+    "network": {
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}",
+        "on-click": "blueman-manager"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-muted": "󰅶",
+        "format-icons": { "default": ["", "", ""], "headphone": "" },
+        "on-click": "pavucontrol"
+    },
+    "battery": {
+        "states": { "warning": 30, "critical": 15 },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰃨",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": { "activated": "", "deactivated": "" }
+    },
+    "custom/swaync": {
+        "exec": "swaync-client -swb",
+        "return-type": "json",
+        "format": "{icon}",
+        "format-icons": {
+            "none": "󰂚",
+            "notification": "󰂚",
+            "dnd-none": "󰖂",
+            "dnd-notification": "󰖂"
+        },
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    "custom/cliphist": {
+        "format": "",
+        "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
+        "tooltip-format": "Clipboard History",
+        "interval": "once"
+    },
+    "custom/wlsunset": {
+        "format": "{}",
+        "exec": "pgrep -x wlsunset && echo '' || echo ''",
+        "on-click": "pkill -x wlsunset || wlsunset -l 40 -L 116",
+        "tooltip-format": "Night Light",
+        "interval": 5
+    },
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%Y-%m-%d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+    "tray": {
+        "spacing": 10
+    }
+}
