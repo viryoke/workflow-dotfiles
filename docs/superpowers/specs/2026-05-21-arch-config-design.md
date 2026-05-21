@@ -238,11 +238,11 @@ shell-integration = none
 
 ```
 {{- if eq .chezmoi.os "darwin" }}
-dot_config/niri/
-dot_config/fcitx5/
-dot_config/waybar/
-dot_config/rofi-wayland/
-dot_config/swaync/
+.config/niri/
+.config/fcitx5/
+.config/waybar/
+.config/rofi-wayland/
+.config/swaync/
 encrypted/clash-verge-rev-profiles.yaml.age
 {{- end }}
 ```
