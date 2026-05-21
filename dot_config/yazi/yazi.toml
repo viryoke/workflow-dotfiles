@@ -1,0 +1,90 @@
+# Yazi file manager config - arch-config managed by chezmoi
+
+[manager]
+ratio = [1, 4, 3]
+sort_by = "alphabetical"
+sort_sensitive = false
+sort_reverse = false
+sort_dir_first = true
+sort_translit = false
+linemode = "none"
+show_hidden = false
+show_symlink = true
+show_copy = true
+
+[preview]
+tab_size = 2
+max_width = 600
+max_height = 900
+cache_dir = ""
+image_filter = "triangle"
+image_quality = 90
+sixel_fraction = 3
+ueberzug_scale = 1
+ueberzug_offset = [0, 0, 0, 0]
+
+[opener]
+edit = [
+  { run = '$EDITOR "$@"', block = true, desc = "Edit" },
+]
+open = [
+  { run = 'xdg-open "$@"', desc = "Open" },
+]
+
+[open]
+rules = [
+  { mime = "text/*", use = "edit" },
+  { mime = "application/json", use = "edit" },
+  { mime = "*/javascript", use = "edit" },
+  { name = "*.md", use = "edit" },
+  { name = "*.toml", use = "edit" },
+  { name = "*.yaml", use = "edit" },
+  { name = "*.yml", use = "edit" },
+  { mime = "video/*", use = "open" },
+  { mime = "audio/*", use = "open" },
+  { mime = "image/*", use = "open" },
+  { mime = "application/pdf", use = "open" },
+  { mime = "application/zip", use = "open" },
+  { mime = "application/gzip", use = "open" },
+  { mime = "application/x-tar", use = "open" },
+  { mime = "application/x-bzip*", use = "open" },
+  { mime = "application/x-xz", use = "open" },
+  { mime = "application/x-rar*", use = "open" },
+  { name = "*.7z", use = "open" },
+]
+
+[tasks]
+micro_workers = 5
+macro_workers = 10
+max_retry = 3
+bubble_log = 5000
+
+[log]
+enabled = false
+
+[input]
+cd_title = "Change directory:"
+create_dir_title = "Create directory:"
+create_file_title = "Create file:"
+rename_title = "Rename:"
+delete_title = "Delete: {0}?"
+trash_title = "Trash: {0}?"
+copy_title = "Copy: {0}?"
+move_title = "Move: {0}?"
+symlink_title = "Symlink: {0}?"
+
+[keymap]
+[[manager.prepend_keymap]]
+on = [ "<C-s>" ]
+run = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
+
+[[manager.prepend_keymap]]
+on = [ "y" ]
+run = [ 'shell --confirm "echo \"$@\" | wl-copy"', 'yank' ]
+desc = "Yank and copy path to clipboard"
+
+[[manager.prepend_keymap]]
+on = [ "Y" ]
+run = [ 'shell --confirm "echo \"$@\" | wl-copy"', 'yank --relative' ]
+desc = "Yank relative path to clipboard"

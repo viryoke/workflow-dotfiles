@@ -1,0 +1,30 @@
+// Catppuccin Mocha theme for Zellij - arch-config managed by chezmoi
+
+themes {
+    catppuccin-mocha {
+        fg "#cdd6f4"
+        bg "#1e1e2e"
+        black "#45475a"
+        red "#f38ba8"
+        green "#a6e3a1"
+        yellow "#f9e2af"
+        blue "#89b4fa"
+        magenta "#cba6f7"
+        cyan "#94e2d5"
+        white "#bac2de"
+        orange "#fab387"
+    }
+    catppuccin-latte {
+        fg "#4c4f69"
+        bg "#eff1f5"
+        black "#9ca0b0"
+        red "#d20f39"
+        green "#40a02b"
+        yellow "#df8e1d"
+        blue "#1e66f5"
+        magenta "#8839ef"
+        cyan "#179299"
+        white "#5c5f77"
+        orange "#fe640b"
+    }
+}
