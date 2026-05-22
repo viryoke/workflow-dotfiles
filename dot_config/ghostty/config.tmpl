@@ -13,11 +13,11 @@ window-theme = light
 
 {{- if eq .chezmoi.os "darwin" }}
 macos-option-as-alt = true
-background-opacity = 0.93
+background-opacity = 0.78
 background-blur = macos-glass-regular
 {{- else }}
 shell-integration = none
-background-opacity = 0.93
+background-opacity = 0.78
 wait-after-command = true
 abnormal-command-exit-runtime = 500
 confirm-close-surface = always
@@ -28,7 +28,7 @@ font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
 
 # Window appearance
-unfocused-split-opacity = 0.75
+unfocused-split-opacity = 0.60
 {{- if eq .theme "mocha" }}
 unfocused-split-fill = #181825
 split-divider-color = #cba6f7
@@ -36,6 +36,10 @@ split-divider-color = #cba6f7
 unfocused-split-fill = #e6e9ef
 split-divider-color = #8839ef
 {{- end }}
+
+# Keybinds
+keybind = super+shift+f=toggle_fullscreen
+keybind = super+shift+o=toggle_background_opacity
 
 # Clipboard
 copy-on-select = clipboard
