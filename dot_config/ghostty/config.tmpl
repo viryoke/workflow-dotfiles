@@ -13,8 +13,11 @@ window-theme = light
 
 {{- if eq .chezmoi.os "darwin" }}
 macos-option-as-alt = true
+background-opacity = 0.85
+blur = true
 {{- else }}
 shell-integration = none
+background-opacity = 0.85
 wait-after-command = true
 abnormal-command-exit-runtime = 500
 confirm-close-surface = always
