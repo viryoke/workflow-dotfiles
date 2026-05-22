@@ -1,17 +1,17 @@
--- Custom plugins - arch-config managed by chezmoi
+-- Custom plugins - workflow-dotfiles managed by chezmoi
 
 return {
   -- Catppuccin theme
   {
     "catppuccin/nvim",
-    lazy = true,
     name = "catppuccin",
+    priority = 1000,
     opts = {
       flavour = "mocha",
       integrations = {
         cmp = true,
         gitsigns = true,
-        nvimtree = true,
+        neotree = true,
         treesitter = true,
         notify = true,
         mini = true,

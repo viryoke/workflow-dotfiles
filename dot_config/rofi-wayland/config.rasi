@@ -10,7 +10,7 @@ configuration {
 }
 
 @theme "shared"
-@theme "catppuccin-mocha"
+@theme "current"
 
 window {
     height:                      33em;

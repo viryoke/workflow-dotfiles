@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # Bootstrap LazyVim — Neovim distribution
+# Note: chezmoi already provides custom nvim config (dot_config/nvim/)
+# This script only bootstraps the plugin system, does NOT clone the starter
 set -euo pipefail
 
 log() { echo "[lazyvim] $*"; }
@@ -10,24 +12,18 @@ if ! command -v nvim &>/dev/null; then
     pacman -S --needed --noconfirm neovim
 fi
 
-log "LazyVim bootstrap: backing up existing nvim config..."
-NVIM_DIR=~/.config/nvim
-if [[ -d "$NVIM_DIR" ]] && [[ ! -d "$NVIM_DIR/lazy" ]]; then
-    BACKUP=~/.config/nvim.bak.$(date +%Y%m%d%H%M%S)
-    mv "$NVIM_DIR" "$BACKUP"
-    log "Existing config backed up to $BACKUP"
+# Ensure chezmoi has deployed nvim config
+NVIM_DIR="$HOME/.config/nvim"
+if [[ ! -d "$NVIM_DIR" ]]; then
+    log "No nvim config found — running chezmoi apply first..."
+    chezmoi apply
 fi
 
-# Clean state directories
+# Clean plugin state directories for fresh bootstrap
 rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim
-
-log "Installing LazyVim starter..."
-# LazyVim uses a git-based starter template
-git clone https://github.com/LazyVim/starter "$NVIM_DIR" --depth 1
-rm -rf "$NVIM_DIR/.git"
 
 log "Running initial LazyVim bootstrap (this will install plugins)..."
 nvim --headless "+Lazy! sync" +qa 2>/dev/null || true
 
-log "LazyVim installed — run 'nvim' to verify and customize plugins"
-log "Custom config goes in: $NVIM_DIR/lua/plugins/"
+log "LazyVim installed — run 'nvim' to verify"
+log "Custom config managed by chezmoi: dot_config/nvim/"

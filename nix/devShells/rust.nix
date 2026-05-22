@@ -9,6 +9,9 @@ pkgs.mkShellNoCC {
     rust-analyzer
     clippy
     rustfmt
+    cargo-watch
+    cargo-nextest
+    cargo-expand
   ];
 
   shellHook = ''

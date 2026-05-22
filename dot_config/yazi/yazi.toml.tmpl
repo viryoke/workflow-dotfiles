@@ -1,4 +1,5 @@
-# Yazi file manager config - arch-config managed by chezmoi
+# Yazi file manager config - workflow-dotfiles managed by chezmoi
+# Cross-platform with Mac/Linux differences
 
 [manager]
 ratio = [1, 4, 3]
@@ -20,16 +21,20 @@ cache_dir = ""
 image_filter = "triangle"
 image_quality = 90
 sixel_fraction = 3
-ueberzug_scale = 1
-ueberzug_offset = [0, 0, 0, 0]
 
 [opener]
 edit = [
   { run = '$EDITOR "$@"', block = true, desc = "Edit" },
 ]
+{{- if eq .chezmoi.os "linux" }}
 open = [
   { run = 'xdg-open "$@"', desc = "Open" },
 ]
+{{- else }}
+open = [
+  { run = 'open "$@"', desc = "Open" },
+]
+{{- end }}
 
 [open]
 rules = [
@@ -79,6 +84,7 @@ on = [ "<C-s>" ]
 run = 'shell "$SHELL" --block --confirm'
 desc = "Open shell here"
 
+{{- if eq .chezmoi.os "linux" }}
 [[manager.prepend_keymap]]
 on = [ "y" ]
 run = [ 'shell --confirm "echo \"$@\" | wl-copy"', 'yank' ]
@@ -88,3 +94,14 @@ desc = "Yank and copy path to clipboard"
 on = [ "Y" ]
 run = [ 'shell --confirm "echo \"$@\" | wl-copy"', 'yank --relative' ]
 desc = "Yank relative path to clipboard"
+{{- else }}
+[[manager.prepend_keymap]]
+on = [ "y" ]
+run = [ 'shell --confirm "echo \"$@\" | pbcopy"', 'yank' ]
+desc = "Yank and copy path to clipboard"
+
+[[manager.prepend_keymap]]
+on = [ "Y" ]
+run = [ 'shell --confirm "echo \"$@\" | pbcopy"', 'yank --relative' ]
+desc = "Yank relative path to clipboard"
+{{- end }}

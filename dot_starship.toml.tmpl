@@ -1,5 +1,4 @@
-# Starship prompt config - arch-config managed by chezmoi
-# Cross-platform configuration
+# Starship prompt config - workflow-dotfiles managed by chezmoi
 
 format = """
 $directory\
@@ -28,13 +27,8 @@ format = "[$symbol$branch]($style) "
 format = '([$all_status$ahead_behind]($style) )'
 
 [character]
-{{- if eq .theme "mocha" }}
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
-{{- else }}
-success_symbol = "[❯](bold green)"
-error_symbol = "[❯](bold red)"
-{{- end }}
 
 [cmd_duration]
 min_time = 2_000

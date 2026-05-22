@@ -1,13 +1,14 @@
-# zshrc - arch-config managed by chezmoi
+# zshrc - workflow-dotfiles managed by chezmoi
 # Cross-platform shell configuration
 
 # ---- History ----
 HISTSIZE=100000
 SAVEHIST=100000
 HISTFILE=~/.zsh_history
-setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+setopt EXTENDED_HISTORY
 
 # ---- Aliases ----
 alias ll='ls -lh'
@@ -23,11 +24,27 @@ alias pac='paru'
 alias pacs='paru -Ss'
 alias pacu='paru -Syu'
 alias niri-restart='niri msg action quit; niri'
-alias screenshot='hyprshot -m region'
+alias screenshot='slurp | grim -g - ~/Pictures/Screenshots/$(date +%Y-%m-%d-%H-%M-%S).png'
 {{- else }}
 alias brewu='brew update && brew upgrade'
 alias brewc='brew cleanup'
 {{- end }}
+
+# ---- Modern CLI replacements ----
+if command -v eza &>/dev/null; then
+  alias ls='eza --icons'
+  alias ll='eza -lh --icons --git'
+  alias la='eza -lah --icons --git'
+  alias lt='eza --tree --level=2 --icons'
+fi
+
+if command -v bat &>/dev/null; then
+  alias cat='bat --paging=never'
+fi
+
+if command -v fd &>/dev/null; then
+  alias find='fd'
+fi
 
 # ---- Key bindings ----
 bindkey -e
@@ -35,15 +52,15 @@ bindkey '^R' history-incremental-search-backward
 
 # ---- Completion ----
 autoload -Uz compinit
-compinit
+# Skip security check for faster startup (files are managed by chezmoi)
+compinit -C
 
 # ---- Plugins (manual, not oh-my-zsh) ----
-# zsh-autosuggestions - installed by pacman on Linux, brew on Mac
 {{- if eq .chezmoi.os "linux" }}
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 {{- else }}
-# Mac: these are installed via Homebrew or nix
+# Mac: these are installed via Homebrew
 if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
@@ -65,4 +82,6 @@ fi
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export INPUT_METHOD=fcitx
 {{- end }}

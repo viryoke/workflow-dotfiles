@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.mkShell {
+pkgs.mkShellNoCC {
   name = "cpp";
 
   packages = with pkgs; [

@@ -1,7 +1,7 @@
-#!/bin/env bash
-# Screenshot menu - arch-config managed by chezmoi
+#!/usr/bin/env bash
+# Screenshot menu - workflow-dotfiles managed by chezmoi
 # Options: fullscreen, area, window, timed (5s delay)
-# Uses hyprshot for capture, swappy for annotation
+# Uses slurp+grim for capture (Wayland-native, works on Niri)
 
 pkill rofi && exit 0
 
@@ -16,19 +16,20 @@ selected=$(echo -e "$options" | rofi -dmenu -i -p "Screenshot" \
 
 SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
+FILENAME="$(date +%Y-%m-%d-%H-%M-%S).png"
 
 case "$selected" in
     "Fullscreen")
-        hyprshot -m screen -o "$SCREENSHOT_DIR" -f "$(date +%Y-%m-%d-%H-%M-%S).png"
+        grim "$SCREENSHOT_DIR/$FILENAME"
         ;;
     "Area")
-        hyprshot -m region -o "$SCREENSHOT_DIR" -f "$(date +%Y-%m-%d-%H-%M-%S).png"
+        slurp | grim -g - "$SCREENSHOT_DIR/$FILENAME"
         ;;
     "Window")
-        hyprshot -m window -o "$SCREENSHOT_DIR" -f "$(date +%Y-%m-%d-%H-%M-%S).png"
+        niri msg action screenshot-window
         ;;
     "Timed (5s)")
         sleep 5
-        hyprshot -m screen -o "$SCREENSHOT_DIR" -f "$(date +%Y-%m-%d-%H-%M-%S).png"
+        grim "$SCREENSHOT_DIR/$FILENAME"
         ;;
 esac

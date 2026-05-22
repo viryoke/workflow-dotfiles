@@ -12,7 +12,7 @@ Powered by [chezmoi](https://chezmoi.io) for template-based dotfile sync, [age](
 - **Catppuccin Mocha/Latte theme toggle** — dark/light switching across Waybar, Rofi, SwayNC, Ghostty, Niri, GTK, Qt via a single rofi menu
 - **Wallbash auto-theming** — wallpaper changes auto-recolor the entire desktop based on luminance detection
 - **7 Rofi menu suite** — app launcher, power menu, clipboard, screenshot, emoji, wallpaper, theme switch
-- **17 Waybar modules** — workspaces, window title, keyboard, CPU, memory, temp, disk, network, bluetooth, audio, battery, backlight, idle inhibitor, swaync, cliphist, wlsunset, tray
+- **15 Waybar modules** — workspaces, window title, keyboard, CPU, memory, temp, disk, network, bluetooth, audio, idle inhibitor, swaync, cliphist, wlsunset, tray
 - **7 nix devShells** — Python, Node.js, Rust, Go, C++, Java, CUDA — isolated, reproducible, zero system pollution
 - **Full post-install automation** — 10 scripts that turn a fresh CachyOS install into a configured desktop in one command
 - **Age encryption** — proxy configs, SSH keys encrypted via chezmoi's built-in age integration
@@ -62,7 +62,7 @@ Linux-only configs (Niri, Waybar, Rofi, SwayNC, fcitx5, swaylock, wlogout) are a
 workflow-dotfiles/      ← git repo = chezmoi source dir
 ├── dot_config/         → ~/.config/       (chezmoi managed)
 │   ├── niri/           → Niri WM config + keybindings + window rules + autostart
-│   ├── waybar/         → 17-module bar config + Catppuccin CSS
+│   ├── waybar/         → 15-module bar config + Catppuccin CSS
 │   ├── rofi-wayland/   → 7 menu scripts + Catppuccin Mocha/Latte themes
 │   ├── swaync/         → Notification center + widget styling
 │   ├── ghostty/        → Terminal config (Mac/Linux conditional)
@@ -123,8 +123,8 @@ All dev environments are isolated via nix. No system pollution, no version confl
 cd ~/workflow-dotfiles/nix
 
 nix develop .#python    # Python 3.13 + uv + ruff + mypy
-nix develop .#nodejs    # Node.js 22 + Bun
-nix develop .#rust      # rustc + cargo + rust-analyzer + clippy
+nix develop .#nodejs    # Node.js 22 + Bun + TypeScript
+nix develop .#rust      # rustc + cargo + rust-analyzer + clippy + cargo-watch + cargo-nextest
 nix develop .#go        # Go + gopls
 nix develop .#cpp       # gcc + cmake + clang + gdb
 nix develop .#java      # JDK 21 + gradle
@@ -153,10 +153,11 @@ Quick toggle from terminal:
 ### What gets themed
 
 When theme changes, the apply script propagates to:
-1. **chezmoi apply --force** — regenerates all `.tmpl` files (Waybar CSS, Ghostty, Niri focus-ring colors, Starship, SwayNC, wlogout)
-2. **Rofi** — copies current theme file to `current.rasi`
-3. **Waybar** — restarts process
-4. **SwayNC** — reloads style
+1. **chezmoi apply --force** — regenerates all `.tmpl` files (reads theme from `~/.cache/arch-config/theme.cache`)
+2. **Niri** — `niri msg action reload` (focus-ring, tab-indicator colors)
+3. **Rofi** — copies current theme file to `current.rasi`
+4. **Waybar** — restarts process
+5. **SwayNC** — reloads style
 5. **GTK** — switches via `gsettings`
 6. **Qt/Kvantum** — switches Catppuccin Kv theme
 
@@ -176,7 +177,7 @@ When wallpaper changes via the rofi wallpaper selector:
 | App launcher | `Mod+D` | default drun | Search and launch applications |
 | Power menu | `Mod+Shift+D` | `powermenu.sh` | Lock/logout/suspend/hibernate/reboot/shutdown via wlogout |
 | Clipboard | `Mod+Shift+S` | `clipboard.sh` | Browse cliphist history, select to copy |
-| Screenshot | `Mod+Shift+S` | `screenshot.sh` | Fullscreen/area/window/timed(5s) via hyprshot |
+| Screenshot | `Mod+Shift+S` | `screenshot.sh` | Fullscreen/area/window/timed(5s) via slurp+grim |
 | Emoji | `Mod+Shift+E` | `emoji.sh` | rofi-emoji grid picker, copies to clipboard via wl-copy |
 | Wallpaper | `Mod+Shift+W` | `wallpaper.sh` | Browse ~/Pictures/Wallpapers, apply with swww |
 | Theme switch | `Mod+Shift+T` | `themeswitch.sh` | Mocha/Latte/Auto toggle + wallbash |
@@ -189,12 +190,14 @@ When wallpaper changes via the rofi wallpaper selector:
 |--------|-----|-------------|
 | Terminal | `Mod+Return` | Open Ghostty |
 | App launcher | `Mod+D` | Rofi drun |
+| Emoji picker | `Mod+Shift+E` | Rofi emoji picker |
+| Quit niri | `Mod+Shift+X` | Quit Niri (with confirmation) |
 | Navigate | `Mod+H/J/K/L` | Vim-style focus movement |
 | Workspaces | `Mod+1-10` | Switch workspace (CJK numeral icons) |
 | Column width | `Mod+1/2/3` | 1/3, 1/2, 2/3 width presets |
 | Fullscreen | `Mod+Shift+F` | Toggle fullscreen |
 | Float | `Mod+Shift+G` | Toggle floating |
-| Screenshot | `Mod+Shift+P` | Screenshot menu |
+| Screenshot | `Mod+Shift+P` | Screenshot menu (slurp+grim) |
 | Night light | Waybar module | Toggle wlsunset |
 
 ---

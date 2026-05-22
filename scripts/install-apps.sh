@@ -52,8 +52,6 @@ AUR_PACKAGES=(
     yazi
     # Terminal multiplexer
     zellij
-    # Screen lock helper
-    betterlockscreen
 )
 
 log "Installing pacman packages: ${PACMAN_PACKAGES[*]}"

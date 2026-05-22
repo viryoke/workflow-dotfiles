@@ -1,5 +1,5 @@
-// Zellij config - arch-config managed by chezmoi
-// KDL format
+// Zellij config - workflow-dotfiles managed by chezmoi
+// KDL format, cross-platform
 
 keybinds clear-defaults=true {
     shared {
@@ -29,7 +29,6 @@ keybinds clear-defaults=true {
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt f" { ToggleFocusFullscreen; }
         bind "Alt p" { SwitchToMode "Pane"; }
-        bind "Alt t" { SwitchToMode "Tab"; }
     }
     pane {
         bind "h" { MoveFocus "Left"; }
@@ -70,7 +69,11 @@ ui {
     }
 }
 
+{{- if eq .theme "mocha" }}
 theme "catppuccin-mocha"
+{{- else }}
+theme "catppuccin-latte"
+{{- end }}
 
 // Auto-layout: default to 2-pane horizontal split
 default_layout "compact"

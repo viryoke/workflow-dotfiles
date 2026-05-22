@@ -6,6 +6,8 @@ pkgs.mkShellNoCC {
   packages = with pkgs; [
     nodejs_22
     bun
+    typescript
+    ts-node
   ];
 
   shellHook = ''

@@ -94,7 +94,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // Power/lock
-    Mod+Shift+E { quit; }
+    Mod+Shift+X { quit; }
     Mod+Shift+P { power-off-monitors; }
     Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
     Ctrl+Alt+Delete { quit; skip-confirmation; }

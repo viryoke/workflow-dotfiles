@@ -22,11 +22,9 @@ PACMAN_PACKAGES=(
     # Bluetooth
     blueman
     # Screenshots + recording
-    hyprshot slurp grim swappy wf-recorder
-    # Color picker
-    hyprpicker
+    slurp grim swappy wf-recorder
     # Input method
-    fcitx5 fcitx5-rime fcitx5-chinese-addons fcitx5-gtk fcitx5-configtool
+    fcitx5 fcitx5-chinese-addons fcitx5-gtk fcitx5-configtool
     # Fonts
     noto-fonts-cjk ttf-jetbrains-mono-nerd
     # Icons + cursor
@@ -39,6 +37,8 @@ PACMAN_PACKAGES=(
     ghostty
     # File manager
     thunar
+    # Modern CLI tools
+    eza fd bat ripgrep
 )
 
 AUR_PACKAGES=(

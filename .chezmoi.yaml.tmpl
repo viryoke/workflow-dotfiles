@@ -6,8 +6,8 @@ data:
     "linux"
     {{- end }}
   theme:
-    {{- if eq .chezmoi.os "darwin" }}
-    "mocha"
+    {{- if stat ~/.cache/arch-config/theme.cache }}
+    {{- readFile ~/.cache/arch-config/theme.cache }}
     {{- else }}
-    "mocha"
+    mocha
     {{- end }}

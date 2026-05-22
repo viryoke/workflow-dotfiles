@@ -22,10 +22,10 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | Cursor theme | Bibata-Modern-Cursor | pacman or AUR |
 | Terminal | Ghostty | pacman or AUR |
 | Shell | zsh + starship | pacman |
-| Input method | fcitx5-rime + fcitx5-chinese-addons (pinyin fallback) | pacman |
+| Input method | fcitx5 + fcitx5-chinese-addons (pinyin) | pacman |
 | Lock screen | swaylock | pacman |
 | Logout menu | wlogout | pacman |
-| Screenshots | hyprshot + slurp + grim + swappy (annotation) | pacman |
+| Screenshots | slurp + grim + swappy (annotation) | pacman |
 | Screen recording | wf-recorder | pacman |
 | Wallpaper | swww (animated transitions + GIFs) | pacman |
 | Clipboard | wl-clipboard + cliphist | pacman |
@@ -33,7 +33,7 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | Idle/lock | Niri built-in idle + swaylock | niri config |
 | Bluetooth | blueman | pacman |
 | Emoji picker | rofi-emoji | AUR |
-| Color picker | hyprpicker | pacman |
+| Color picker | slurp (area selection for screenshots) | pacman |
 
 ### Rofi Menu Suite (7 menus)
 
@@ -47,7 +47,7 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | Wallpaper selector | `wallpaper.sh` | browse/change wallpaper with swww |
 | Theme switcher | `themeswitch.sh` | toggle Catppuccin Mocha/Latte + wallbash mode |
 
-### Waybar Modules (17 modules + tray)
+### Waybar Modules (15 modules + tray)
 
 | Module | Purpose |
 |--------|---------|
@@ -61,8 +61,6 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | network | WiFi/Ethernet status |
 | bluetooth | device pairing/status toggle |
 | pulseaudio | volume + media control |
-| battery | battery status (if applicable) |
-| backlight | brightness |
 | idle_inhibitor | prevent auto-lock toggle |
 | custom/swaync | notification center toggle |
 | custom/cliphist | clipboard manager toggle |
@@ -82,6 +80,7 @@ Core desktop environment for the CachyOS PC (i9 14900KF + GTX 4060).
 | File manager (GUI) | Thunar | pacman |
 | Calculator | rofi-calc | AUR |
 | Terminal multiplexer | Zellij | pacman |
+| Modern CLI | eza (ls) + fd (find) + bat (cat) + ripgrep (grep) | pacman |
 | Proxy | clash-verge-rev-bin | AUR |
 | Messaging | Telegram Desktop | pacman |
 | Messaging | WeChat | AUR (wechat-universal-bwrap) |
@@ -123,12 +122,12 @@ All dev environments are isolated via nix. Activated with `nix develop .#<name>`
 
 | Category | Software | Managed by |
 |----------|----------|------------|
-| Python | uv + python3.13 | nix develop `.#python` |
-| Node.js | Bun + nodejs_22 | nix develop `.#nodejs` |
-| Rust | rustc + cargo + rust-analyzer | nix develop `.#rust` |
+| Python | uv + python3.13 + ruff + mypy | nix develop `.#python` |
+| Node.js | Bun + nodejs_22 + typescript + ts-node | nix develop `.#nodejs` |
+| Rust | rustc + cargo + rust-analyzer + clippy + cargo-watch + cargo-nextest + cargo-expand | nix develop `.#rust` |
 | Go | go (latest stable) | nix develop `.#go` |
 | C++ | gcc + cmake + clang | nix develop `.#cpp` |
-| Java | jdk (latest LTS) + gradle | nix develop `.#java` |
+| Java | JDK 21 + gradle | nix develop `.#java` |
 | CUDA toolkit | cudaPackages (latest) | nix develop `.#cuda` |
 | AI CLI | Claude Code + Antigravity CLI | nix develop `.#ai` + curl install |
 

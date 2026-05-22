@@ -25,6 +25,7 @@ require("lazyvim").setup({
 
 -- Options
 vim.opt.relativenumber = true
+vim.opt.number = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.wrap = false
@@ -38,3 +39,10 @@ vim.opt.smartindent = true
 vim.opt.undofile = true
 vim.opt.backup = false
 vim.opt.writebackup = false
+
+-- Fold settings for nvim-ufo
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true

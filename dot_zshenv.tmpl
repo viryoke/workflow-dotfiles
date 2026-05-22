@@ -1,5 +1,5 @@
-# zshenv - environment variables (loaded for all zsh instances)
-# arch-config managed by chezmoi
+# zshenv - workflow-dotfiles managed by chezmoi
+# Environment variables (loaded for all zsh instances)
 
 export EDITOR=nvim
 export VISUAL=nvim
@@ -11,9 +11,9 @@ export BROWSER=open
 {{- end }}
 
 # XDG directories
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
 
-# User binaries (Antigravity CLI, etc.)
+# User binaries (Antigravity CLI, Claude Code, etc.)
 export PATH="$HOME/.local/bin:$PATH"

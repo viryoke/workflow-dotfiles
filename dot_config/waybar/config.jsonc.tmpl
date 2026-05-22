@@ -17,8 +17,6 @@
         "network",
         "bluetooth",
         "pulseaudio",
-        "battery",
-        "backlight",
         "idle_inhibitor",
         "custom/swaync",
         "custom/cliphist",
@@ -97,19 +95,6 @@
         "format-icons": { "default": ["", "", ""], "headphone": "" },
         "on-click": "pavucontrol"
     },
-    "battery": {
-        "states": { "warning": 30, "critical": 15 },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% 󰃨",
-        "format-plugged": "{capacity}% ",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "backlight": {
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "light -A 5",
-        "on-scroll-down": "light -U 5"
-    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": { "activated": "", "deactivated": "" }
@@ -130,7 +115,7 @@
     },
     "custom/cliphist": {
         "format": "",
-        "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
+        "on-click": "~/.config/rofi-wayland/scripts/clipboard.sh",
         "tooltip-format": "Clipboard History",
         "interval": "once"
     },

@@ -1,7 +1,8 @@
-#!/bin/env bash
-# Theme apply script - arch-config (NOT chezmoi managed)
+#!/usr/bin/env bash
+# Theme apply script - workflow-dotfiles (NOT chezmoi managed)
 # Reads theme cache, regenerates themed config files, and signals apps to reload
 # Called by themeswitch.sh after writing theme.cache
+set -euo pipefail
 
 CACHE_DIR="$HOME/.cache/arch-config"
 THEME_CACHE="$CACHE_DIR/theme.cache"
@@ -22,13 +23,17 @@ fi
 chezmoi apply --force
 
 # Step 2: Copy the correct rofi theme file to the active theme location
-# Rofi can't use chezmoi templates, so we copy the static theme file
+ROFI_DIR="$HOME/.config/rofi-wayland/themes"
+mkdir -p "$ROFI_DIR"
 case "$theme" in
     mocha)
-        cp ~/.config/rofi-wayland/themes/catppuccin-mocha.rasi ~/.config/rofi-wayland/themes/current.rasi
+        cp "$ROFI_DIR/catppuccin-mocha.rasi" "$ROFI_DIR/current.rasi"
         ;;
     latte)
-        cp ~/.config/rofi-wayland/themes/catppuccin-latte.rasi ~/.config/rofi-wayland/themes/current.rasi
+        cp "$ROFI_DIR/catppuccin-latte.rasi" "$ROFI_DIR/current.rasi"
+        ;;
+    *)
+        cp "$ROFI_DIR/catppuccin-mocha.rasi" "$ROFI_DIR/current.rasi"
         ;;
 esac
 
@@ -38,6 +43,9 @@ pkill -x waybar && waybar &
 
 # SwayNC: reload style
 swaync-client -R && swaync-client -rs
+
+# Niri: reload config (focus-ring, tab-indicator colors)
+niri msg action reload
 
 # GTK theme: switch via gsettings
 case "$theme" in

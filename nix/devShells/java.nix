@@ -4,11 +4,11 @@ pkgs.mkShellNoCC {
   name = "java";
 
   packages = with pkgs; [
-    jdk
+    jdk21
     gradle
   ];
 
   shellHook = ''
-    echo "Java $(java -version 2>&1 | head -1)"
+    echo "Java JDK 21 $(java -version 2>&1 | head -1)"
   '';
 }
